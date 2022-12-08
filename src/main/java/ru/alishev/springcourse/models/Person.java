@@ -53,10 +53,41 @@ PROJECT2
 @Table(name="Person")
 public class Person {
     
-    @Column(name= "")
+    @Id
+    @Column(name= "id")
     private int id;
     
-    private String name;
+    @Column(name= "fullName")
+    private String fullName;
     
-    private int age;
+    @Column(name= "yearOfBirth")
+    private int yearOfBirth;
+    
+    public Person() {
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
 }
