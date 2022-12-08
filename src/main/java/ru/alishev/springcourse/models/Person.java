@@ -2,6 +2,7 @@ package ru.alishev.springcourse.models;
 
 import javax.validation.constraints.*;
 
+PROJECT1 
 public class Person {
     private int id;
 
@@ -46,4 +47,16 @@ public class Person {
         this.yearOfBirth = yearOfBirth;
     }
 
+}
+PROJECT2
+@Entity
+@Table(name="Person")
+public class Person {
+    
+    @Column(name= "")
+    private int id;
+    
+    private String name;
+    
+    private int age;
 }
