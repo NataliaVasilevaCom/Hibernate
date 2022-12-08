@@ -67,6 +67,11 @@ public class Person {
     public Person() {
     }
     
+    public Person(String fullName, int yearOfBirth) {
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
+    }
+    
     public int getId() {
         return id;
     }
@@ -103,10 +108,23 @@ public class App {
         try {
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 1);
-            System.out.println(person.getFullName());
-            System.out.println(person.getYearOfBirth());
-
+            Person person1 = new Person("Test1", 30);
+            Person person2 = new Person("Test2", 40);
+            Person person3 = new Person("Test3", 50);
+            
+            session.save(person1);
+            session.save(person2);
+            session.save(person3);
+            ////////
+            Person person = session.get(Person.class, 2);
+            person.setName("New name");
+            ////////
+            Person person = session.get(Person.class, 2);
+            person.delete(person);
+            ////////
+            Person person = session.get(Person.class, 2);
+            person.save(person);
+            ////////
             session.getTransaction.commit();
             
         } finally {
