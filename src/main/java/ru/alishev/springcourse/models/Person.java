@@ -10,7 +10,7 @@ public class Person {
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
     private String fullName;
 
-    @Min(value = 1900, message = "Возраст должен быть больее, чем 1900")
+    @Min(value = 1900, message = "Возраст должен быть более, чем 1900")
     private int yearOfBirth;
 
 
@@ -94,6 +94,11 @@ public class Person {
 
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
+    }
+    
+    @Override
+    public String toString() {
+        return "Person " + id;
     }
 
 }
