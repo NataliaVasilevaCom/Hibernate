@@ -54,3 +54,58 @@ public class Book {
 
 //PROJECT2:
 import javax.persistence.Entity;
+
+
+@Entity
+@Table(name="Book")
+public class Book {
+    
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    @Column(name= "fullName")
+    private String fullName;
+    
+    @Column(name= "yearOfBirth")
+    private int yearOfBirth;
+    
+    public Person() {
+    }
+    
+    public Person(String fullName, int yearOfBirth) {
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+    
+    @Override
+    public String toString() {
+        return "Person " + id;
+    }
+
+}
