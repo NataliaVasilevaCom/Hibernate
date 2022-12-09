@@ -2,6 +2,7 @@ package ru.alishev.springcourse.models;
 
 import javax.validation.constraints.*;
 
+//PROJECT1:
 public class Book {
     private int id;
 
@@ -49,3 +50,7 @@ public class Book {
         this.year = year;
     }
 }
+
+
+//PROJECT2:
+import javax.persistence.Entity;
