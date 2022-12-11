@@ -116,7 +116,7 @@ public class Person {
 ///////////PROJECT2: new directory in models App
 public class App {
     public static void main(String[] args) {
-        Configuration configuration = new Configuration().addAnnotatedClass(Person.class);
+        Configuration configuration = new Configuration().addAnnotatedClass(Person.class).addAnnotatedClass(Book.class).;
         
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
@@ -141,8 +141,18 @@ public class App {
             Person person = session.get(Person.class, 2);
             person.save(person);
             ////////
+            Person person = session.get(Person.class, 3);
+            List<Book> books = person.getBooks();
+            ////////////
+            Book book = session.get(Book.class, 5);
+            Person person = book.getOwner();
+            ////////////
+            Peerson person = session.get(Person.class, 2);
+            Book book = new Book("Book from Hibernate", );
+            ////////////
+            ////////////
+            ////////////
             session.getTransaction.commit();
-            
         } finally {
             sessionFactory.close();
         }
