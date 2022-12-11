@@ -71,6 +71,10 @@ public class Book {
     @Column(name= "yearOfBirth")
     private int yearOfBirth;
     
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person owner; 
+    
     public Person() {
     }
     
@@ -101,6 +105,14 @@ public class Book {
 
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
+    }
+    
+    public int getOwner() {
+        return owner;
+    }
+
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
     
     @Override
