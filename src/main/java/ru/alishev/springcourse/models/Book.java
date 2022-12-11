@@ -107,11 +107,11 @@ public class Book {
         this.yearOfBirth = yearOfBirth;
     }
     
-    public int getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
     
