@@ -64,6 +64,9 @@ public class Person {
     @Column(name= "yearOfBirth")
     private int yearOfBirth;
     
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+    
     public Person() {
     }
     
@@ -94,6 +97,14 @@ public class Person {
 
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
+    }
+    
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
     
     @Override
