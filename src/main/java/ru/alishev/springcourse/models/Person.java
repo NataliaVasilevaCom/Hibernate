@@ -148,9 +148,37 @@ public class App {
             Person person = book.getOwner();
             ////////////
             Peerson person = session.get(Person.class, 2);
-            Book book = new Book("Book from Hibernate", );
-            ////////////
-            ////////////
+            Book newBook = new Book("Book from Hibernate", person);
+            person.getBooks().add(newBook);
+            session.save(newBook);
+            ////////////создать нового человека и новый заказ
+            Person person = new Person ("Test person", 30);
+            Book newBook = new Book("Book from Hibernate 2", person);
+            person.setBooks(new ArrayList<>(Collections.singletoneList(newBook)));
+            session.save(person);
+            session.save(newBook);
+            ////////////удалить книгу у человека
+            Person person = session.get(Person.class, 3);
+            List<Book> books = person.getBooks();
+            for(Book book : books) {
+                session.remove(book);
+            }
+            person.getBooks().clear();
+            ////////////удалить человека
+            Person person = session.get(Person.class, 2);
+            session.remove(person);
+            person.getBooks().forEach(i -> i.setOwner(null));
+            ////////////поменять владельца у существующего товара
+            Person person = session.get(Person.class, 4);
+            Book book = session.getBook(Book.class, 1);
+            book.getOwner().getBooks().remove(book);
+            book.setOwner(person);
+            person.getBooks().add(book);            
+            ////////////каскадирование в Hibernate
+            Person person = new Person("Test name", 30);
+            Book book = new Book("Test cascading book", person);
+            person.setBooks(new ArrayList<>(Collections.singletoneList(book)));
+            session.save(person);
             ////////////
             session.getTransaction.commit();
         } finally {
