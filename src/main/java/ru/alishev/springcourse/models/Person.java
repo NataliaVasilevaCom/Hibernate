@@ -65,6 +65,7 @@ public class Person {
     private int yearOfBirth;
     
     @OneToMany(mappedBy = "owner")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Book> books;
     
     public Person() {
@@ -105,6 +106,14 @@ public class Person {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+        book.setOwner(this);
+    }
+    
+    //рефакторинг
+    public void addBook(Book book) {
+        if (this.book == null)
+            this.book = new ArrayLast<>();
+        this.books.add(book);
     }
     
     @Override
@@ -176,9 +185,9 @@ public class App {
             person.getBooks().add(book);            
             ////////////каскадирование в Hibernate
             Person person = new Person("Test name", 30);
-            Book book = new Book("Test cascading book", person);
+            Book book = new Book("Test cascading book");
             person.setBooks(new ArrayList<>(Collections.singletoneList(book)));
-            session.save(person);
+            session.save(person);//save поменяли на persist
             ////////////
             session.getTransaction.commit();
         } finally {
