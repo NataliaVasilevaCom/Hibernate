@@ -78,10 +78,9 @@ public class Book {
     public Person() {
     }
     
-    public Person(String fullName, int yearOfBirth, Person owner) {
+    public Person(String fullName, int yearOfBirth) {
         this.fullName = fullName;
         this.yearOfBirth = yearOfBirth;
-        this.owner = owner;
     }
     
     public int getId() {
