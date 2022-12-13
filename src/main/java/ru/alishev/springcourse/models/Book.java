@@ -65,22 +65,26 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @Column(name= "fullName")
-    private String fullName;
+    @Column(name= "title")
+    private String title;
     
-    @Column(name= "yearOfBirth")
-    private int yearOfBirth;
+    @Column(name= "author")
+    private String author;
+    
+    @Column(name= "year")
+    private int year;
     
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner; 
     
-    public Person() {
+    public Book() {
     }
     
-    public Person(String fullName, int yearOfBirth) {
-        this.fullName = fullName;
-        this.yearOfBirth = yearOfBirth;
+    public Book(String title, String author, int year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
     }
     
     public int getId() {
@@ -91,20 +95,28 @@ public class Book {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setTitle(String title) {
+        this.fultitlelName = title;
+    }
+        
+    public String getAuthor() {
+        return author;
     }
 
-    public int getYearOfBirth() {
-        return yearOfBirth;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public void setYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
     
     public Person getOwner() {
