@@ -189,6 +189,11 @@ public class App {
             Book book = new Book("Test cascading book");
             person.setBooks(new ArrayList<>(Collections.singletoneList(book)));
             session.save(person);//save поменяли на persist
+            ////////////рефакторинг
+            Person person = new Person("Test name", 30);
+            Book book1 = new Book("Book1");
+            Book book2 = new Book("Book2");
+            Book book3 = new Book("Book3");
             ////////////
             session.getTransaction.commit();
         } finally {
