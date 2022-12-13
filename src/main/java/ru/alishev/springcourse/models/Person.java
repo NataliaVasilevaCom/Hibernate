@@ -114,6 +114,7 @@ public class Person {
         if (this.book == null)
             this.book = new ArrayLast<>();
         this.books.add(book);
+        book.setOwner(this);
     }
     
     @Override
