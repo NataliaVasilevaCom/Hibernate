@@ -24,17 +24,19 @@ import java.util.Objects;
  */
 @Configuration
 @ComponentScan("ru.alishev.springcourse")
+@PropertySource("classpath:hibernate.properties")
+@EnableTransactionManagement//передаем Spring управление транзакциями
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
 public class SpringConfig implements WebMvcConfigurer {
     
     private final ApplicationContext applicationContext;
-    private final Environment environment;
+    private final Environment env;//import from org.springframework.core.env
 
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext, Environment environment) {
+    public SpringConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
-        this.environment = environment;
+        this.env = env;
     }
 
     @Bean
@@ -68,8 +70,8 @@ public class SpringConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource =
                 new DriverManagerDataSource();
-        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("driver")));
-        dataSource.setUrl(environment.getProperty("url"));
+        dataSource.setDriverClassName(env.getRequiredProperty("hibernate.driver_class")));
+        dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
         dataSource.setUsername(environment.getProperty("username_value"));
         dataSource.setPassword(environment.getProperty("password"));
 
