@@ -28,3 +28,5 @@ CREATE TABLE Book (
 INSERT INTO Person(id, name, age) VALUES (1, 'Test person', 20);
 SELECT * FROM Person;
 DROP TABLE Person;
+//разные запросы
+ALTER TABLE Person ADD COLUMN email varchar(100) UNIQUE;
