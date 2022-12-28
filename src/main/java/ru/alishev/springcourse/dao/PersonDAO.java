@@ -28,17 +28,20 @@ public class PersonDAO {
         this.sessionFactory = sessionFactory;
     }
     
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Person> index() {
         Session session = sessionFactory.getCurrentSession();
         //обычный hibernate код
-        return null;
+        List<Person> people = session.createQuery("select p from Person p", Person.class).getResultList();
+        return people;
     }
 
     public Person show(int id) {
         return null;
     }
 
+    
+    @Transactional
     public void save(Person person) {
         
     }
