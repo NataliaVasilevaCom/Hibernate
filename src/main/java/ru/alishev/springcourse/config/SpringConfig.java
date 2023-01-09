@@ -30,6 +30,7 @@ import java.util.Objects;
 @EnableTransactionManagement//передаем Spring управление транзакциями
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
+@EnableJpaRepositories("ru.alishev.springcourse.repositories")
 public class SpringConfig implements WebMvcConfigurer {
     
     private final ApplicationContext applicationContext;
