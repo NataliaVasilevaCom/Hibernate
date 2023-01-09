@@ -1,3 +1,5 @@
+/create new package repositories: ru.alishev.springcourse.repositories
+
 package ru.alishev.springcourse.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
