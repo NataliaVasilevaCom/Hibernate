@@ -1,3 +1,7 @@
+/create new package repositories: ru.alishev.springcourse.repositories
+
+
+
 package ru.alishev.springcourse.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,8 @@ import java.util.Objects;
 @ComponentScan("ru.alishev.springcourse")
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
+@EnableTransactionManagment
+@EnableJpaRepositories("ru.alishev.springcourse.repositories")
 public class SpringConfig implements WebMvcConfigurer {
     
     private final ApplicationContext applicationContext;
