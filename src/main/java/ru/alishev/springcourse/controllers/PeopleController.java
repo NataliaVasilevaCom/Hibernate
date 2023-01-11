@@ -17,17 +17,24 @@ import ru.alishev.springcourse.util.PersonValidator;
 @RequestMapping("/people")
 public class PeopleController {
 
-    private final PersonDAO personDAO;
-    private final PersonValidator personValidator;
+    private final PeopleService peopleService;
+    private final BooksService booksService;
+    
     @Autowired
-    public PeopleController(PersonDAO personDAO, PersonValidator personValidator) {
-        this.personDAO = personDAO;
-        this.personValidator = personValidator;
+    public PeopleController(PeopleService peopleService, BooksService booksService) {
+        this.peopleService = peopleService;
+        this.booksService = booksService;
     }
 
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
+        
+        bookService.findByTitle("someTitle");
+        bookService.findByOwner(peopleService.findAll().get(0));
+        
+        peopleService.test();
+        
         return "people/index";
     }
 
