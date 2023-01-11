@@ -15,7 +15,7 @@ public interface PeopleRepository extends JpaRepository<Person, Integer> {
 
 @Repository
 public interface BooksRepository extends JpaRepository<Person, Integer> {
-    List<Book> findByOwner(Person owner);
+    List<Book> findByTitle(String title);
     
     List<Book> findByOwner(Person owner);
 }
@@ -70,6 +70,25 @@ public class PeopleService {
     @Transactional
     public void delete(int id) {
         peopleRepository.deleteById(id);
+    }
+}
+
+@Service
+@Transactional(readOnly = true)
+public class BooksService {
+    private final BooksRepository booksRepository;
+    
+    @Autowired
+    public BooksService(BooksRepository booksRepository) {
+        this.booksRepository = booksRepository;
+    }
+    
+    public List<Book> findByTitle(String title) {
+        return booksRepository.findByTitle(title);
+    }
+    
+    public List<Book> findByOwner(Person owner) {
+        return booksRepository.findByOwner(owner);
     }
 }
 */
