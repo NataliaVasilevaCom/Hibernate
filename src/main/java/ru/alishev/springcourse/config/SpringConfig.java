@@ -15,7 +15,11 @@ public interface PeopleRepository extends JpaRepository<Person, Integer> {
     
     List<Person> findByFullNameOrderByYearOfBirth(String fullName);
     
-    List<Person> findBy
+    //нет такого поля в Проекте 2: List<Person> findByEmail(String email);
+    
+    List<Person> findByFullNameStartingWith(String startingWith);//поиск человека по первой букве имени
+    
+    List<Person> findByFullNameOrEmail(String fullName, String email);//поиск человека по имени или почте
 }
 
 @Repository
