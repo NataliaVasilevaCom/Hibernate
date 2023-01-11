@@ -13,9 +13,13 @@ public interface PeopleRepository extends JpaRepository<Person, Integer> {
 
 }
 
+@Repository
+public interface BooksRepository extends JpaRepository<Person, Integer> {
+    List<Book> findByOwner
+}
 
 
-/create new package repositories: ru.alishev.springcourse.repositories
+/create new package repositories: ru.alishev.springcourse.services
 package ru.alishev.springcourse.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
