@@ -99,6 +99,10 @@ public class BooksService {
     public List<Book> findByOwner(Person owner) {
         return booksRepository.findByOwner(owner);
     }
+    
+    public void test() {
+        System.out.println("Testing here with debug. Inside Hibernate Transaction");
+    }
 }
 */
     
