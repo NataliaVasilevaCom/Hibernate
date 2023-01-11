@@ -13,7 +13,9 @@ public interface PeopleRepository extends JpaRepository<Person, Integer> {
     //кастомные методы с использованием Sprind Data JPA
     List<Person> findByFullName(String fullName);
     
-    List<Person> findByFullNameOrderByAge(String fullName);
+    List<Person> findByFullNameOrderByYearOfBirth(String fullName);
+    
+    List<Person> findBy
 }
 
 @Repository
