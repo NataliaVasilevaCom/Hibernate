@@ -10,7 +10,8 @@ import ru.alishev.springcourse.models.Person;
  */
 @Repository
 public interface PeopleRepository extends JpaRepository<Person, Integer> {
-
+    //кастомные методы с использованием Sprind Data JPA
+    List<Person> findByName();
 }
 
 @Repository
