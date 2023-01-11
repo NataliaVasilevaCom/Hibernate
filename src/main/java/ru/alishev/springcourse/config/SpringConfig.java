@@ -15,7 +15,9 @@ public interface PeopleRepository extends JpaRepository<Person, Integer> {
 
 @Repository
 public interface BooksRepository extends JpaRepository<Person, Integer> {
-    List<Book> findByOwner
+    List<Book> findByOwner(Person owner);
+    
+    List<Book> findByOwner(Person owner);
 }
 
 
